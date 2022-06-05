@@ -9,44 +9,107 @@
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="./images/favicon-32x32.png"
+      href="./src/assets/images/favicon-32x32.png"
     />
 
     <title>Frontend Mentor | Interactive rating component</title>
-
-    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-    <style>
-      .attribution {
-        font-size: 11px;
-        text-align: center;
-      }
-      .attribution a {
-        color: hsl(228, 45%, 44%);
-      }
-    </style>
+    <link rel="stylesheet" href="./src/public/css/index.css" />
   </head>
-  <body>
-    <!-- Rating state start -->
+  <body class="index" onload="renderRatingBtn()">
+    <script>
+      let currentRating = "";
+      const onSubmit = (e) => {
+        if (!currentRating) {
+          alert("Please select a number to give us some feedback.");
+        } else {
+          renderRatingResult();
+          document
+            .getElementById("thank-you-section")
+            .removeAttribute("hidden");
+          document
+            .getElementById("rating-section")
+            .setAttribute("hidden", true);
+        }
+      };
+      const clearSelection = () => {
+        for (let i = 0; i < 5; i++) {
+          document
+            .getElementById(`rating-${i + 1}`)
+            .classList.remove("circle-btn-selected");
+        }
+      };
+      const onSelect = (e) => {
+        clearSelection();
+        document
+          .getElementById(e.target.id)
+          .classList.add("circle-btn-selected");
+        currentRating = e.target.value;
+      };
+      const renderRatingBtn = () => {
+        const ratingPoints = new Array(1, 2, 3, 4, 5);
+        const ratingPointsElements = ratingPoints.map((point) => {
+          const el = document.createElement("button");
+          el.append(point);
+          el.setAttribute("type", "button");
+          el.setAttribute("id", `rating-${point}`);
+          el.setAttribute("class", "rating-point circle-btn");
+          el.setAttribute("value", `${point}`);
+          el.onclick = (e) => onSelect(e);
+          return el;
+        });
+        document.getElementById("rating-row").append(...ratingPointsElements);
+      };
+      const renderRatingResult = () => {
+        const el = document
+          .getElementById("rating-result")
+          .append(`You selected ${currentRating} out of 5`);
+        return;
+      };
+    </script>
+    <div id="container">
+      <div id="rating-card">
+        <div id="rating-section">
+          <img
+            id="star-icon"
+            src="./src/assets/images/icon-star.svg"
+            alt="star-icon"
+          />
+          <h1 class="desc-header">How did we do?</h1>
+          <p class="desc">
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+          <div id="rating-row"></div>
+          <button
+            class="submit-btn"
+            id="rating-submit-btn"
+            onclick="onSubmit()"
+          >
+            SUBMIT
+          </button>
+        </div>
 
-    How did we do? Please let us know how we did with your support request. All
-    feedback is appreciated to help us improve our offering! 1 2 3 4 5 Submit
+        <div id="thank-you-section" hidden>
+          <img
+            id="thank-you-icon"
+            src="./src/assets/images/illustration-thank-you.svg"
+            alt="thank-you-icon"
+          />
+          <div id="rating-result" class="desc"></div>
+          <h1 class="desc-header">Thank you!</h1>
+          <p id="thank-you-desc" class="desc">
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
 
-    <!-- Rating state end -->
-
-    <!-- Thank you state start -->
-
-    You selected
-    <!-- Add rating here -->
-    out of 5 Thank you! We appreciate you taking the time to give a rating. If
-    you ever need more support, don’t hesitate to get in touch!
-
-    <!-- Thank you state end -->
-
-    <div class="attribution">
-      Challenge by
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-        >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">P-Parinya</a>.
+      </div>
     </div>
   </body>
 </html>

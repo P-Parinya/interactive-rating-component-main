@@ -1,0 +1,152 @@
+.attribution {
+  margin-top: 20px;
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+@font-face {
+  font-family: "Overpass";
+  src: url("../../assets/fonts/Overpass-VariableFont_wght.ttf");
+  font-style: normal;
+}
+
+body {
+  background-color: hsl(216, 12%, 8%);
+  font-family: "Overpass";
+  color: white;
+  font-size: 15px;
+  min-height: fit-content;
+  overflow: hidden;
+}
+
+body p {
+  font-size: 15px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+@media screen and (min-width: 1440px) {
+  #rating-card {
+    width: 340px;
+  }
+}
+
+@media screen and (min-width: 375px) and (max-width: 1439px) {
+  #rating-card {
+    width: 300px;
+  }
+}
+
+#rating-card {
+  background-image: radial-gradient(
+    circle at 50% -50%,
+    hsl(213, 19%, 21%),
+    hsl(213, 19%, 19%),
+    hsl(213, 19%, 17%),
+    hsl(212, 18%, 15%),
+    hsl(214, 19%, 13%)
+  );
+  border-radius: 10px;
+  border-color: 1px solid white;
+  padding: 25px;
+  margin: auto;
+}
+
+#star-icon {
+  width: 14px;
+  height: 14px;
+  padding: 14px;
+  border-radius: 50%;
+  background-color: hsl(212, 19%, 23%);
+}
+
+.circle-btn {
+  width: 48px;
+  height: 48px;
+  padding: 10px;
+  border: 0;
+  border-radius: 50%;
+  color: hsl(216, 12%, 54%);
+  background-color: hsl(212, 19%, 23%);
+  cursor: pointer;
+}
+
+.circle-btn:hover {
+  background-color: hsl(25, 97%, 53%);
+  color: white;
+}
+
+.circle-btn-selected {
+  background-color: hsl(216, 12%, 54%);
+  color: white;
+}
+
+.desc-header {
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  margin: 20px 0 0 0;
+  font-variation-settings: "wght" 400;
+}
+
+#thank-you-section {
+  text-align: center;
+}
+
+#thank-you-icon {
+  margin-top: 10px;
+  width: 128px;
+}
+
+#rating-result {
+  background-color: hsl(212, 19%, 23%);
+  color: hsl(25, 97%, 53%);
+  padding: 5px 10px 5px 10px;
+  width: fit-content;
+  margin: 20px auto 30px auto;
+  border-radius: 20px;
+}
+
+.desc {
+  color: hsl(216, 12%, 54%);
+  margin: 10px 0 0 0;
+}
+
+#rating-row {
+  margin: 25px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rating-point {
+  font-variation-settings: "wght" 700;
+}
+
+.submit-btn {
+  margin: 25px 0 0 0;
+  color: white;
+  background-color: hsl(25, 97%, 53%);
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  color: hsl(25, 97%, 53%);
+  background-color: white;
+}
+
+#rating-submit-btn {
+  border: 0;
+  border-radius: 20px;
+  width: 100%;
+  height: 32px;
+  padding: 10px;
+  letter-spacing: 2px;
+  font-variation-settings: "wght" 400;
+}
